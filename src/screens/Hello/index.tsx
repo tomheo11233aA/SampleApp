@@ -9,7 +9,7 @@ import { screens } from '@contants/screens'
 const Hello = () => {
     React.useEffect(() => {
         setTimeout(() => {
-            navigate(screens.MAIN)
+            navigate(screens.ONBOARDING)
         }, 500)
     }, [])
     return (

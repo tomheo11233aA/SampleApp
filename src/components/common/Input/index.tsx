@@ -116,15 +116,7 @@ const Input = forwardRef<TextInput, Props>(({
     };
     const backgroundColors = isFocused ? '#EBFAF1' : (backgroundColor ? backgroundColor : myColor.black4)
     const myBoderColor = isFocused ? colors.mainColor : (borderColor ? borderColor : myColor.black4);
-    // const tintColors = isFocused || value ? colors.mainColor : 'black';
-    let tintColors;
-    if (isFocused) {
-        tintColors = colors.mainColor;
-    } else if (value && value.length > 0) {
-        tintColors = 'black';
-    } else {
-        tintColors = '#6666';
-    }
+    const tintColors = isFocused ? colors.mainColor : (tintColor ? tintColor : myColor.black);
     const blockStyles = [
         isPaddingAdnroid && { paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 },
         isPaddingIos && {
@@ -218,7 +210,6 @@ const Input = forwardRef<TextInput, Props>(({
                             width: sizeIcon,
                             height: sizeIcon,
                             marginRight: getSize.m(10),
-                            resizeMode: 'contain',
                         }}
                         tintColor={tintColors}
                     />
@@ -252,17 +243,29 @@ const Input = forwardRef<TextInput, Props>(({
                 <Btn
                     onPress={onPress}
                     height={'100%'}
-                    width={sizeIcon * 2}
                 >
                     <Img
                         source={iconTwo}
-                        tintColor={tintColors}
+                        tintColor={tintColor}
                         style={{
                             width: sizeIcon,
                             height: sizeIcon,
-                            resizeMode: 'contain',
                         }}
                     />
+                </Btn>
+            }
+            {coin &&
+                <Btn
+                    onPress={onPress}
+                    height={'100%'}
+                >
+                    <Txt
+                        center
+                        justify={'center'}
+                        alignSelf={'center'}
+                    >
+                        {coin}
+                    </Txt>
                 </Btn>
             }
         </Box>

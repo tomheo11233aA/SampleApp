@@ -9,7 +9,6 @@ import { themeUserSelector } from "@redux/selector/appSelector";
 
 const Main = () => {
     const isLogin = useAppSelector(isLoginUserSelector)
-    console.log('isLogin', isLogin)
     const theme = useAppSelector(themeUserSelector)
     return (
         <>

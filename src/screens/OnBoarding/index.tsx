@@ -14,7 +14,6 @@ import { navigate } from '@utils/navigationRef';
 import { screens } from '@contants/screens';
 import Box from '@common/Box';
 import { width, height } from '@utils/responsive';
-import Txt from '@common/Txt';
 
 const images = [
     { id: 1, image: require('@images/background.png') },
@@ -26,6 +25,7 @@ const Onboarding = () => {
     const { t } = useTranslation()
     const progressValue = useSharedValue<number>(0);
     return (
+        // <View style={{ flex: 1 }}>
         <Box flex={1} backgroundColor={'#000000'}>
             <Carousel
                 data={images}
@@ -49,36 +49,6 @@ const Onboarding = () => {
                 }
             />
 
-            <Box
-                width={width}
-                height={height * 0.3}
-                backgroundColor={colors.mainColor}
-                absolute
-                bottom={0}
-                paddingHorizontal={width * 0.1}
-                paddingVertical={height * 0.05}
-            >
-                <Txt
-                    size={20}
-                    color={'#fff'}
-                    center
-                >
-                    {t('Welcome to Shopping Online')}
-                </Txt>
-            </Box>
-
-
-            {/* <View style={styles.paginationContainer}>
-                    {images.map((_, index) => (
-                        <PaginationItem
-                            backgroundColor={'#06C149'}
-                            animValue={progressValue}
-                            index={index}
-                            key={index}
-                            length={images.length}
-                        />
-                    ))}
-                </View> */}
         </Box>
     )
 }
@@ -160,7 +130,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: height * 0.04,
+        // marginBottom: hp('2%'),
+        
     },
     imageBackground: {
         flex: 1,
@@ -176,5 +147,6 @@ const styles = StyleSheet.create({
         flex: 1,
         resizeMode: 'contain',
         justifyContent: 'center',
+        backgroundColor: '#000000',
     },
 })

@@ -1,4 +1,9 @@
 export const screens = {
-    HELLO : 'Hello',
-    ONBOARDING : 'Onboarding',
+    HELLO: 'Hello',
+    MAIN: 'Main',
+    ONBOARDING: 'Onboarding',
+    SIGNUP: 'Signup',
+    SIGNIN: 'Signin',
+    HOWTOLOGIN: 'HowToLogin',
+    FILLPROFILE: 'FillProfile',
 }

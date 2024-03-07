@@ -14,6 +14,9 @@ import { navigate } from '@utils/navigationRef';
 import { screens } from '@contants/screens';
 import Box from '@common/Box';
 import { width, height } from '@utils/responsive';
+import Txt from '@common/Txt';
+import Safe from '@reuse/Safe';
+import Btn from '@common/Btn';
 
 const images = [
     { id: 1, image: require('@images/background.png') },
@@ -25,8 +28,7 @@ const Onboarding = () => {
     const { t } = useTranslation()
     const progressValue = useSharedValue<number>(0);
     return (
-        // <View style={{ flex: 1 }}>
-        <Box flex={1} backgroundColor={'#000000'}>
+        <Safe flex={1}>
             <Carousel
                 data={images}
                 renderItem={({ item }) => (
@@ -37,6 +39,7 @@ const Onboarding = () => {
                             start={{ x: 0, y: 0 }}
                             end={{ x: 0, y: 1 }}
                             colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 1)']}
+                            // colors={['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.5)']}
                             style={styles.backgroundGradient}
                         />
                     </ImageBackground>
@@ -49,7 +52,73 @@ const Onboarding = () => {
                 }
             />
 
-        </Box>
+            <Box
+                absolute
+                bottom={0}
+                width={width}
+                height={height * 0.33}
+                paddingHorizontal={width * 0.05}
+            >
+                {/* <View style={styles.paginationContainer}>
+                    {images.map((_, index) => (
+                        <PaginationItem
+                            backgroundColor={'#06C149'}
+                            animValue={progressValue}
+                            index={index}
+                            key={index}
+                            length={images.length}
+                        />
+                    ))}
+                </View> */}
+                <Txt
+                    size={width * 0.13}
+                    color={'white'}
+                    fontFamily={fonts.MAINB}
+                    fontWeight={'600'}
+                >
+                    {t('Welcome to')} 👋
+                </Txt>
+                <Txt
+                    size={width * 0.13}
+                    color={colors.mainColor}
+                    fontFamily={fonts.MAINB}
+                    fontWeight={'600'}
+                    marginBottom={width * 0.03}
+                >
+                    {t('Shopify')}
+                </Txt>
+
+                <Txt
+                    color={'white'}
+                    fontFamily={fonts.MAIN}
+                    fontWeight={'400'}
+                    size={width * 0.04}
+                >
+                    {t('The best products e-commerce & online store app of the century for your needs')}
+                </Txt>
+                <Btn
+                    onPress={() => navigate(screens.HOWTOLOGIN)}
+                    width={width * 0.9}
+                    height={height * 0.07}
+                    radius={width * 0.1}
+                    row
+                    alignCenter
+                    justifyCenter
+                    backgroundColor={colors.mainColor}
+                    marginTop={width * 0.05}
+
+                >
+                    <Txt
+                        size={width * 0.05}
+                        center
+                        color={'white'}
+                        fontFamily={fonts.MAINB}
+                    >
+                        {t('Get Started')}
+                    </Txt>
+                </Btn>
+            </Box>
+        </Safe>
     )
 }
 
@@ -130,8 +199,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        // marginBottom: hp('2%'),
-        
+        marginBottom: 20
     },
     imageBackground: {
         flex: 1,
@@ -147,6 +215,5 @@ const styles = StyleSheet.create({
         flex: 1,
         resizeMode: 'contain',
         justifyContent: 'center',
-        backgroundColor: '#000000',
     },
 })
